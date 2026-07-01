@@ -1,0 +1,504 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --brand-bg: #24030a;
+  --brand-bg-light: #380612;
+  --brand-cream: #fbe6ea;
+  --brand-accent: #ffffff;
+  --brand-green: #ff3f5e;
+}
+
+/* Light Theme Variables */
+.light {
+  --brand-bg: #24030a; 
+  --brand-bg-light: #380612; 
+  --brand-cream: #fbe6ea; 
+  --brand-accent: #ffffff; 
+  --brand-green: #ff3f5e; 
+}
+
+@theme {
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-bg-light: var(--brand-bg-light);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-green: var(--brand-green);
+  
+  --font-display: "Bebas Neue", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-heavy: "Montserrat", sans-serif;
+}
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e02f4d;
+}
+
+/* Custom styles */
+body {
+  background-color: var(--brand-bg);
+  color: var(--brand-cream);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Noise overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* R3F Canvas Container positioning */
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.canvas-container canvas {
+  pointer-events: auto;
+}
+
+/* Utilities for editorial layouts */
+.hairline-border {
+  border: 1px solid rgba(248, 249, 250, 0.12);
+  transition: border-color 0.4s ease;
+}
+
+.light .hairline-border {
+  border: 1px solid rgba(9, 11, 9, 0.12);
+}
+
+.hairline-border-t {
+  border-top: 1px solid rgba(248, 249, 250, 0.12);
+  transition: border-color 0.4s ease;
+}
+.light .hairline-border-t {
+  border-top: 1px solid rgba(9, 11, 9, 0.12);
+}
+
+.hairline-border-b {
+  border-bottom: 1px solid rgba(248, 249, 250, 0.12);
+  transition: border-color 0.4s ease;
+}
+.light .hairline-border-b {
+  border-bottom: 1px solid rgba(9, 11, 9, 0.12);
+}
+
+.hairline-border-r {
+  border-right: 1px solid rgba(248, 249, 250, 0.12);
+  transition: border-color 0.4s ease;
+}
+.light .hairline-border-r {
+  border-right: 1px solid rgba(9, 11, 9, 0.12);
+}
+
+.hairline-border-l {
+  border-left: 1px solid rgba(248, 249, 250, 0.12);
+  transition: border-color 0.4s ease;
+}
+.light .hairline-border-l {
+  border-left: 1px solid rgba(9, 11, 9, 0.12);
+}
+
+/* Infinite Marquee Scroll Animation */
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-33.333%, 0, 0); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+/* Spin animation for elements */
+.animate-spin-slow {
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Custom Hero Typography Sandwich colors per theme */
+.hero-title-solid {
+  color: var(--brand-cream);
+  transition: color 0.4s ease;
+}
+
+.light .hero-title-solid {
+  color: var(--brand-accent);
+}
+
+.hero-title-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--brand-cream);
+  transition: -webkit-text-stroke-color 0.4s ease;
+}
+
+.light .hero-title-outline {
+  -webkit-text-stroke: 1.5px var(--brand-accent);
+}
+
+@media (min-width: 768px) {
+  .hero-title-outline {
+    -webkit-text-stroke: 2.5px var(--brand-cream);
+  }
+  .light .hero-title-outline {
+    -webkit-text-stroke: 2.5px var(--brand-accent);
+  }
+}
+
+/* =========================================
+   PREMIUM CINEMATIC BACKGROUND SYSTEM
+   ========================================= */
+
+.cinematic-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Layer 1: Flowing Base */
+.cinematic-base-gradient {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, #380612 0%, #140105 60%);
+  animation: pulseBase 20s infinite alternate ease-in-out;
+}
+
+/* Layer 2: Soft Radial Glows */
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  mix-blend-mode: screen;
+}
+
+.deep-red {
+  top: 10%;
+  left: 20%;
+  width: 60vw;
+  height: 60vw;
+  background: rgba(220, 20, 60, 0.45);
+  animation: driftGlow1 8s infinite alternate ease-in-out;
+}
+
+.deep-red-2 {
+  bottom: -10%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: rgba(220, 20, 60, 0.4);
+  animation: driftGlow1 9s infinite alternate ease-in-out reverse;
+}
+
+.vibrant-pink {
+  bottom: 0%;
+  right: 10%;
+  width: 70vw;
+  height: 70vw;
+  background: rgba(255, 63, 94, 0.4);
+  animation: driftGlow2 12s infinite alternate ease-in-out;
+}
+
+.vibrant-pink-2 {
+  top: 10%;
+  right: -5%;
+  width: 40vw;
+  height: 40vw;
+  background: rgba(255, 63, 94, 0.35);
+  animation: driftGlow2 14s infinite alternate ease-in-out reverse;
+}
+
+.soft-red {
+  top: 40%;
+  left: 40%;
+  width: 50vw;
+  height: 50vw;
+  background: rgba(200, 10, 40, 0.5);
+  animation: driftGlow3 10s infinite alternate ease-in-out;
+}
+
+.soft-red-2 {
+  bottom: 20%;
+  left: 30%;
+  width: 40vw;
+  height: 40vw;
+  background: rgba(200, 10, 40, 0.4);
+  animation: driftGlow3 11s infinite alternate ease-in-out reverse;
+}
+
+/* Layer 3: Volumetric Beams & Streaks */
+.volumetric-beam {
+  position: absolute;
+  width: 70vw;
+  height: 150vh;
+  transform-origin: center;
+  filter: blur(80px);
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
+
+.beam-left {
+  top: -20vh;
+  left: -20vw;
+  background: linear-gradient(90deg, rgba(255,63,94,0) 0%, rgba(255,63,94,0.4) 50%, rgba(255,63,94,0) 100%);
+  transform: rotate(35deg);
+  animation: sweepLeft 7s infinite alternate ease-in-out;
+}
+
+.beam-right {
+  top: -30vh;
+  right: -20vw;
+  background: linear-gradient(90deg, rgba(220,20,60,0) 0%, rgba(220,20,60,0.3) 50%, rgba(220,20,60,0) 100%);
+  transform: rotate(-40deg);
+  animation: sweepRight 9s infinite alternate ease-in-out;
+}
+
+.beam-3 {
+  top: -10vh;
+  left: 20vw;
+  background: linear-gradient(90deg, rgba(255,100,120,0) 0%, rgba(255,100,120,0.3) 50%, rgba(255,100,120,0) 100%);
+  transform: rotate(20deg);
+  animation: sweepLeft 8s infinite alternate ease-in-out -4s;
+}
+
+.beam-4 {
+  top: 40vh;
+  right: 10vw;
+  background: linear-gradient(90deg, rgba(200,10,40,0) 0%, rgba(200,10,40,0.25) 50%, rgba(200,10,40,0) 100%);
+  transform: rotate(-60deg);
+  animation: sweepRight 10s infinite alternate ease-in-out -5s;
+}
+
+.light-streak {
+  position: absolute;
+  top: 60%;
+  left: -20%;
+  width: 140%;
+  height: 10vh;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,180,190,0.3) 50%, rgba(255,255,255,0) 100%);
+  filter: blur(20px);
+  transform: rotate(-15deg);
+  animation: glideStreak 5s infinite alternate ease-in-out;
+}
+
+.streak-2 {
+  top: 30%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,150,160,0.4) 50%, rgba(255,255,255,0) 100%);
+  animation: glideStreak 6s infinite alternate ease-in-out -3s;
+}
+
+.streak-3 {
+  top: 80%;
+  left: 20%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,130,140,0.2) 50%, rgba(255,255,255,0) 100%);
+  animation: glideStreak 7s infinite alternate ease-in-out -1s;
+}
+
+/* Layer 4: Floating Haze */
+.haze-cloud {
+  position: absolute;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  filter: blur(90px);
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+
+.cloud-1 {
+  top: 20%;
+  left: 10%;
+  width: 80vw;
+  height: 70vh;
+  background: radial-gradient(circle, rgba(220, 20, 60, 0.25) 0%, rgba(220, 20, 60, 0) 70%);
+  animation: morphHaze 14s infinite alternate ease-in-out;
+}
+
+.cloud-2 {
+  bottom: -10%;
+  right: 0%;
+  width: 90vw;
+  height: 80vh;
+  background: radial-gradient(circle, rgba(200, 10, 40, 0.2) 0%, rgba(200, 10, 40, 0) 70%);
+  animation: morphHaze2 16s infinite alternate ease-in-out;
+}
+
+.cloud-3 {
+  top: 60%;
+  left: 40%;
+  width: 70vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(255, 63, 94, 0.3) 0%, rgba(255, 63, 94, 0) 70%);
+  animation: morphHaze 12s infinite alternate ease-in-out -6s;
+}
+
+.cloud-4 {
+  top: -20%;
+  left: 30%;
+  width: 60vw;
+  height: 50vh;
+  background: radial-gradient(circle, rgba(180, 5, 25, 0.25) 0%, rgba(180, 5, 25, 0) 70%);
+  animation: morphHaze2 15s infinite alternate ease-in-out -8s;
+}
+
+/* Layer 5: Vignette & Grain */
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 300px rgba(0,0,0,0.9);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Layer 6: Front Bloom Highlight */
+.front-bloom-highlight {
+  position: absolute;
+  bottom: -10vh;
+  left: 20vw;
+  width: 60vw;
+  height: 40vh;
+  background: radial-gradient(ellipse at center, rgba(255, 63, 94, 0.25) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(60px);
+  animation: pulseBloom 12s infinite alternate ease-in-out;
+  mix-blend-mode: screen;
+}
+
+/* Keyframes */
+@keyframes pulseBase {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes driftGlow1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30vw, 20vh) scale(1.3); }
+}
+
+@keyframes driftGlow2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-25vw, -30vh) scale(1.4); }
+}
+
+@keyframes driftGlow3 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(20vw, -15vh) scale(0.8); }
+}
+
+@keyframes sweepLeft {
+  0% { transform: rotate(35deg) translateX(-30vw); opacity: 0.2; }
+  100% { transform: rotate(45deg) translateX(40vw); opacity: 0.8; }
+}
+
+@keyframes sweepRight {
+  0% { transform: rotate(-40deg) translateX(30vw); opacity: 0.1; }
+  100% { transform: rotate(-25deg) translateX(-40vw); opacity: 0.7; }
+}
+
+@keyframes glideStreak {
+  0% { transform: rotate(-15deg) translateY(-15vh) scaleX(0.5); opacity: 0.1; }
+  100% { transform: rotate(-10deg) translateY(15vh) scaleX(1.8); opacity: 0.9; }
+}
+
+@keyframes morphHaze {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(180deg) scale(1.5); }
+}
+
+@keyframes morphHaze2 {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(-180deg) scale(1.4); }
+}
+
+@keyframes pulseBloom {
+  0% { opacity: 0.3; transform: scale(0.9); }
+  100% { opacity: 0.9; transform: scale(1.2); }
+}
+
+/* Corner markers */
+.corner-marker {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(255, 255, 255, 0.3);
+  border-style: solid;
+  pointer-events: none;
+}
+.corner-tl {
+  top: 30px;
+  left: 30px;
+  border-width: 1px 0 0 1px;
+}
+.corner-tr {
+  top: 30px;
+  right: 30px;
+  border-width: 1px 1px 0 0;
+}
+.corner-bl {
+  bottom: 30px;
+  left: 30px;
+  border-width: 0 0 1px 1px;
+}
+.corner-br {
+  bottom: 30px;
+  right: 30px;
+  border-width: 0 1px 1px 0;
+}
+

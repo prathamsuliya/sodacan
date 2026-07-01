@@ -1,0 +1,21 @@
+# Task Tracking
+
+- [x] Initialize React + Vite application with standard JavaScript template
+- [x] Install dependencies (three, @react-three/fiber, @react-three/drei, gsap, lenis, lucide-react)
+- [x] Update and configure Tailwind CSS and styles (index.css with dark/light variables and keyframes)
+- [x] Set up public folder and restore the `bottle.glb` file to `public/models/` and `models/`
+- [x] Modify layout components to match Strawberry Botanical Soda:
+  - [x] Navbar (updated CTA to "Get Cans" and added Sun/Moon toggle button)
+  - [x] Hero (added sidebar, asymmetric heading offset, infinite marquee ticker)
+  - [x] StatsSection (changed standard cards to raw tabular list with giant numeric indices)
+  - [x] StorySection (added vertical process tag, left-shifted blocks)
+  - [x] TastingSection (added horizontal graphical flavor intensity bars and sensor tags)
+  - [x] GallerySection (added visual archive sidebars, matched lifestyle tiles)
+  - [x] FooterCTA (updated branding copy to "DRINK REAL FRUIT.")
+- [x] Create 3D components:
+  - [x] BottleModel (R3F loading GLB and applying scroll-driven values + idle + parallax)
+  - [x] BottleCanvas (fixed background overlay Canvas with custom colored rim-light highlights)
+- [x] Create main layout orchestration in `App.jsx` (added fixed vertical background blueprint guides)
+- [x] Verify build and performance:
+  - [x] Run build test (`npm run build`)
+  - [x] Run dev server and verify local site behavior in browser
